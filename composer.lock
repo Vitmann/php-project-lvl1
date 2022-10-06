@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1250a86abab2b6aece1ac072b0f82737",
+    "content-hash": "12467b65a067af91c41a717c0ba68ba5",
     "packages": [
         {
             "name": "wp-cli/php-cli-tools",
@@ -65,27 +65,28 @@
     "packages-dev": [
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "4.0.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "f1d1a6805f5a85c07581abe6d1a9709f171e1b70"
+                "reference": "d7864cb3d5446565348de80441643bd7c4056215"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f1d1a6805f5a85c07581abe6d1a9709f171e1b70",
-                "reference": "f1d1a6805f5a85c07581abe6d1a9709f171e1b70",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/d7864cb3d5446565348de80441643bd7c4056215",
+                "reference": "d7864cb3d5446565348de80441643bd7c4056215",
                 "shasum": ""
             },
             "require": {
                 "ext-simplexml": "*",
                 "ext-tokenizer": "*",
                 "ext-xmlwriter": "*",
-                "php": ">=7.2.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.0 || ^9.0"
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
+            "default-branch": true,
             "bin": [
                 "bin/phpcs",
                 "bin/phpcbf"
@@ -118,14 +119,13 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2022-09-26T03:06:36+00:00"
+            "time": "2022-09-26T02:14:32+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "wp-cli/php-cli-tools": 20,
-        "squizlabs/php_codesniffer": 20
+        "wp-cli/php-cli-tools": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
