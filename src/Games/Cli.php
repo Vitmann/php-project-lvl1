@@ -17,13 +17,13 @@ function Hello()
     foreach ($number as $num) {
         line($num);
         $answer = prompt('Enter your answer');
-        if ($num % 2 === 0){
+        if ($num % 2 === 0) {
             $even = 'yes';
         } else {
             $even = 'no';
         }
 
-        if ($even ===  $answer ) {
+        if ($even ===  $answer) {
             line('Correct!');
         } else {
             line($answer .  ' is wrong answer ;(. Correct answer was ' . $even);
