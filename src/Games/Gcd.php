@@ -15,7 +15,7 @@ function Gcd()
     for ($i = 0; $i < 3; ++$i) {
         $num1 = rand(1, 10);
         $num2 = rand(1, 10);
-        line('Question:' . $num1 . ' ' . $num2 );
+        line('Question:' . $num1 . ' ' . $num2);
         $answer = prompt('Your answer: ');
 
         if ($answer == gmp_gcd($num1, $num2)) {
