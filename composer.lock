@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12467b65a067af91c41a717c0ba68ba5",
+    "content-hash": "e1c53433eb89ef5834e02437f33310f5",
     "packages": [
         {
             "name": "wp-cli/php-cli-tools",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/php-cli-tools.git",
-                "reference": "b6edd35988892ea1451392eb7a26d9dbe98c836d"
+                "reference": "9ee8aae15c1fb7461bc7f808f87519f053758f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/b6edd35988892ea1451392eb7a26d9dbe98c836d",
-                "reference": "b6edd35988892ea1451392eb7a26d9dbe98c836d",
+                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/9ee8aae15c1fb7461bc7f808f87519f053758f7e",
+                "reference": "9ee8aae15c1fb7461bc7f808f87519f053758f7e",
                 "shasum": ""
             },
             "require": {
@@ -57,9 +57,9 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-cli/php-cli-tools/issues",
-                "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.11.15"
+                "source": "https://github.com/wp-cli/php-cli-tools/tree/master"
             },
-            "time": "2022-08-15T10:15:55+00:00"
+            "time": "2022-10-06T20:39:19+00:00"
         }
     ],
     "packages-dev": [
@@ -129,7 +129,9 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-gmp": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
 }
