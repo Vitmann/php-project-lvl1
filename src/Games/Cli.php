@@ -15,7 +15,7 @@ function Cli()
     $number = [4, 6, 7];
 
     foreach ($number as $num) {
-        line('Question:' . $num);
+        line('Question: ' . $num);
         $answer = prompt('Enter your answer');
         if ($num % 2 === 0) {
             $even = 'yes';
