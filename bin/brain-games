@@ -2,6 +2,6 @@
 <?php
 namespace BrainGames;
 require __DIR__ . '/../vendor/autoload.php';
-use function BrainGames\Cli\Hello;
+use function BrainGames\Hello\Hello;
 
 Hello();

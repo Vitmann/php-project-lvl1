@@ -9,7 +9,8 @@
             "src/Games/Engine.php",
             "src/Games/Gcd.php",
             "src/Games/Progression.php",
-            "src/Games/Prime.php"
+            "src/Games/Prime.php",
+            "src/Hello.php"
         ],
         "psr-4": {
             "BrainGames\\": "src/"
