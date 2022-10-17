@@ -30,5 +30,5 @@ function Cli()
             return;
         }
     }
-    line('Congratulations,' . $name . '!');
+    line('Congratulations, ' . $name . '!');
 }
