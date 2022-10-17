@@ -1,0 +1,40 @@
+{
+    "name": "hexlet/code",
+    "description": "hexlet brain",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "src/Games/Cli.php",
+            "src/Games/Engine.php",
+            "src/Games/Gcd.php",
+            "src/Games/Progression.php",
+            "src/Games/Prime.php"
+        ],
+        "psr-4": {
+            "BrainGames\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vitaly Tarasov",
+            "email": "89269643535@mail.ru"
+        }
+    ],
+    "bin": [
+        "bin/brain-games",
+        "bin/brain-even",
+        "bin/brain-calc",
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "wp-cli/php-cli-tools": "dev-master",
+        "ext-gmp": "*"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    }
+}
