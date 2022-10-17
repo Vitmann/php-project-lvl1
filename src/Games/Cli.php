@@ -12,7 +12,7 @@ function Hello()
     line("Hello, %s!", $name);
     line('Answer "yes" if the number is even, otherwise answer "no".');
 
-    $number = [15, 6, 7];
+    $number = [4, 6, 7];
 
     foreach ($number as $num) {
         line($num);
@@ -23,7 +23,7 @@ function Hello()
             $even = 'no';
         }
 
-        if ($even ===  $answer) {
+        if ($even === $answer) {
             line('Correct!');
         } else {
             line($answer .  ' is wrong answer ;(. Correct answer was ' . $even);
