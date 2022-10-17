@@ -16,6 +16,9 @@ brain-gcd:
 brain-calc:
 	./bin/brain-calc
 
+brain-prime:
+	./bin/brain-prime
+
 validate:
 	composer validate
 
