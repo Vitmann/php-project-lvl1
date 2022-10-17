@@ -27,9 +27,8 @@ function Hello()
             line('Correct!');
         } else {
             line($answer .  ' is wrong answer ;(. Correct answer was ' . $even);
-            break;
+            return;
         }
-
-        line('Congratulations,' . $name . '!');
     }
+    line('Congratulations,' . $name . '!');
 }
