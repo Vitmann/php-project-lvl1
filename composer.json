@@ -31,7 +31,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "wp-cli/php-cli-tools": "dev-master",
+        "wp-cli/php-cli-tools": "v0.11.15",
         "ext-gmp": "*"
     },
     "require-dev": {
