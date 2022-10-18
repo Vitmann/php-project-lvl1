@@ -32,8 +32,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "wp-cli/php-cli-tools": "v0.11.15",
-        "ext-gmp": "*"
+        "wp-cli/php-cli-tools": "v0.11.15"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*"
