@@ -5,7 +5,7 @@ namespace BrainGames\Gcd;
 use function cli\line;
 use function cli\prompt;
 
-function get_greatest_common_divisor($a, $b)
+function get_greatest_common_divisor(int $a, int $b): int
 {
     $large = $a > $b ? $a : $b;
     $small = $a > $b ? $b : $a;

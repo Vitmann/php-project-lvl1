@@ -5,7 +5,7 @@ namespace BrainGames\Prime;
 use function cli\line;
 use function cli\prompt;
 
-function primeCheck($number): string
+function primeCheck(int $number): string
 {
     if ($number == 1) {
         return 'no';

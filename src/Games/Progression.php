@@ -16,6 +16,7 @@ function Progressive()
         $indexHideValue = array_rand($string, 1);
 
         $workString = [];
+        $realAnswer = 0;
 
         foreach ($string as $value) {
             if ($value == $string[$indexHideValue]) {
