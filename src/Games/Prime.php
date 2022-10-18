@@ -38,8 +38,10 @@ function Prime(): void
             line('Correct!');
         } else {
             line($answer . ' is wrong answer ;(. Correct answer was ' . primeCheck($number));
-            line("Let's try again, " . $name);
-            break;
+            line("Let's try again, " . $name . '!');
+            return;
         }
     }
+    line('Congratulations, ' . $name . '!');
+
 }
