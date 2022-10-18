@@ -22,8 +22,9 @@ function Gcd()
             line('Correct!');
         } else {
             line($answer . ' is wrong answer ;(. Correct answer was ' . gmp_gcd($num1, $num2));
-            line("Let's try again, " . $name);
-            break;
+            line("Let's try again, " . $name . '!');
+            return;
         }
     }
+    line('Congratulations, ' . $name . '!');
 }
