@@ -38,7 +38,7 @@ function Calc()
         } else {
             line($answer . ' is wrong answer ;(. Correct answer was ' . $result);
             line("Let's try again, " . $name);
-            break;
+            return;
         }
     }
     line('Congratulations, ' . $name . '!');
