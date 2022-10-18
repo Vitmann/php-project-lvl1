@@ -33,8 +33,9 @@ function Progressive()
             line('Correct!');
         } else {
             line($userAnswer . ' is wrong answer ;(. Correct answer was ' . $realAnswer);
-            line("Let's try again, " . $name);
-            break;
+            line("Let's try again, " . $name. '!');
+            return;
         }
     }
+    line('Congratulations, ' . $name . '!');
 }
