@@ -37,7 +37,7 @@ function Calc()
             line('Correct!');
         } else {
             line($answer . ' is wrong answer ;(. Correct answer was ' . $result);
-            line("Let's try again, " . $name);
+            line("Let's try again, " . $name . '!');
             return;
         }
     }
