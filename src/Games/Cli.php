@@ -27,6 +27,7 @@ function Cli()
             line('Correct!');
         } else {
             line($answer .  ' is wrong answer ;(. Correct answer was ' . $even);
+            line("Let's try again, " . $name . '!');
             return;
         }
     }
