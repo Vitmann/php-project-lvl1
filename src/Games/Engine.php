@@ -41,4 +41,5 @@ function Calc()
             break;
         }
     }
+    line('Congratulations, ' . $name . '!');
 }
