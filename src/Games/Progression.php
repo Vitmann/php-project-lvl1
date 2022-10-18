@@ -33,7 +33,7 @@ function Progressive()
             line('Correct!');
         } else {
             line($userAnswer . ' is wrong answer ;(. Correct answer was ' . $realAnswer);
-            line("Let's try again, " . $name. '!');
+            line("Let's try again, " . $name . '!');
             return;
         }
     }

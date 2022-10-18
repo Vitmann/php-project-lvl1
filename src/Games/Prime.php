@@ -43,5 +43,4 @@ function Prime(): void
         }
     }
     line('Congratulations, ' . $name . '!');
-
 }

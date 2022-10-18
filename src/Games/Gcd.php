@@ -5,13 +5,13 @@ namespace BrainGames\Gcd;
 use function cli\line;
 use function cli\prompt;
 
-function get_greatest_common_divisor( $a, $b ) {
-    $large = $a > $b ? $a: $b;
-    $small = $a > $b ? $b: $a;
+function get_greatest_common_divisor($a, $b)
+{
+    $large = $a > $b ? $a : $b;
+    $small = $a > $b ? $b : $a;
     $remainder = $large % $small;
-    return 0 == $remainder ? $small : get_greatest_common_divisor( $small, $remainder );
+    return 0 == $remainder ? $small : get_greatest_common_divisor($small, $remainder);
 }
-
 
 function Gcd()
 {
