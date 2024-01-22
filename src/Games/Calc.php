@@ -1,10 +1,11 @@
 <?php
 
-namespace BrainGames\Engine;
+namespace BrainGames\Calc;
 
 use function cli\line;
 use function cli\prompt;
 
+//Игра: "Калькулятор"
 function Calc()
 {
     line('Welcome to the Brain Game!');

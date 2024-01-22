@@ -13,6 +13,7 @@ function get_greatest_common_divisor(int $a, int $b): int
     return 0 == $remainder ? $small : get_greatest_common_divisor($small, $remainder);
 }
 
+//Игра "НОД"
 function Gcd()
 {
     line('Welcome to the Brain Game!');

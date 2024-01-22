@@ -1,10 +1,11 @@
 <?php
 
-namespace BrainGames;
+namespace BrainGames\Progressive;
 
 use function cli\line;
 use function cli\prompt;
 
+//Игра "Арифметическая прогрессия"
 function Progressive()
 {
     line('Welcome to the Brain Game!');

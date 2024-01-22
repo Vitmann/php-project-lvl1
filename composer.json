@@ -6,11 +6,12 @@
     "autoload": {
         "files": [
             "src/Games/Cli.php",
-            "src/Games/Engine.php",
+            "src/Games/Calc.php",
             "src/Games/Gcd.php",
             "src/Games/Progression.php",
             "src/Games/Prime.php",
-            "src/Hello.php"
+            "src/Games/Even.php",
+            "src/Games/Cli.php"
         ],
         "psr-4": {
             "BrainGames\\": "src/"

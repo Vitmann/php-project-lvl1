@@ -1,7 +1,6 @@
 #!/usr/bin/env php
 <?php
-namespace BrainGames;
+namespace BrainGames\Gcd;
 require __DIR__ . '/../vendor/autoload.php';
-use function BrainGames\Gcd\Gcd;
 
-Gcd();
+Gcd(); //Игра "НОД"

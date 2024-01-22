@@ -5,6 +5,7 @@ namespace BrainGames\Prime;
 use function cli\line;
 use function cli\prompt;
 
+//Игра "Простое ли число?"
 function primeCheck(int $number): string
 {
     if ($number == 1) {

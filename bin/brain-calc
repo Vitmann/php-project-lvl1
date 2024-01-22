@@ -1,7 +1,6 @@
 #!/usr/bin/env php
 <?php
-namespace BrainGames;
+namespace BrainGames\Calc;
 require __DIR__ . '/../vendor/autoload.php';
-use function BrainGames\Engine\Calc;
 
-Calc();
+Calc(); //Игра: "Калькулятор"
