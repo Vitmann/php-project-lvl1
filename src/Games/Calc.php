@@ -4,7 +4,7 @@ namespace BrainGames\Calc;
 
 use function cli\line;
 use function cli\prompt;
-use function \BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\Welcome;
 
 //Игра: "Калькулятор"
 function Calc()
