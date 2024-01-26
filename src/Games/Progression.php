@@ -2,15 +2,14 @@
 
 namespace BrainGames\Progressive;
 
+use function BrainGames\Welcome\Welcome;
 use function cli\line;
 use function cli\prompt;
 
 //Игра "Арифметическая прогрессия"
 function Progressive()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    $name = Welcome();
 
     for ($a = 0; $a < 3; ++$a) {
         $string = range(2, 22, rand(2, 4));

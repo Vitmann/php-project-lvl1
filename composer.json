@@ -11,11 +11,9 @@
             "src/Games/Progression.php",
             "src/Games/Prime.php",
             "src/Games/Even.php",
-            "src/Games/Cli.php"
-        ],
-        "psr-4": {
-            "BrainGames\\": "src/"
-        }
+            "src/Games/Cli.php",
+            "src/Welcome.php"
+        ]
     },
     "authors": [
         {

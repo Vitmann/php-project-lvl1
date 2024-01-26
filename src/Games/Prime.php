@@ -2,6 +2,7 @@
 
 namespace BrainGames\Prime;
 
+use function BrainGames\Welcome\Welcome;
 use function cli\line;
 use function cli\prompt;
 
@@ -22,9 +23,7 @@ function primeCheck(int $number): string
 
 function Prime(): void
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    $name = Welcome();
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
 
     $arrNumber = array(2, 3, 5, 7, 11, 13, 17, 19, 23, 1, 4, 6, 8);

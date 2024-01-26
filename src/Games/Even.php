@@ -2,15 +2,15 @@
 
 namespace BrainGames\Even;
 
+use function BrainGames\Welcome\Welcome;
 use function cli\line;
 use function cli\prompt;
 
 //Игра: "Проверка на чётность"
 function Even()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+
+    $name = Welcome();
     line('Answer "yes" if the number is even, otherwise answer "no".');
 
     $number = [4, 6, 7];

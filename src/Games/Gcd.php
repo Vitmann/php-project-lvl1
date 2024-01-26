@@ -2,6 +2,7 @@
 
 namespace BrainGames\Gcd;
 
+use function BrainGames\Welcome\Welcome;
 use function cli\line;
 use function cli\prompt;
 
@@ -16,9 +17,7 @@ function get_greatest_common_divisor(int $a, int $b): int
 //Игра "НОД"
 function Gcd()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    $name = Welcome();
     line('Find the greatest common divisor of given numbers.');
 
     for ($i = 0; $i < 3; ++$i) {

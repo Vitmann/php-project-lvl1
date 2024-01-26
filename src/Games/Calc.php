@@ -4,13 +4,13 @@ namespace BrainGames\Calc;
 
 use function cli\line;
 use function cli\prompt;
+use function \BrainGames\Welcome\Welcome;
 
 //Игра: "Калькулятор"
 function Calc()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    $name = Welcome();
+
     line('What is the result of the expression?');
 
     for ($i = 0; $i < 3; ++$i) {
