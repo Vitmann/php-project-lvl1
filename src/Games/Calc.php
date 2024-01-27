@@ -10,9 +10,7 @@ use function BrainGames\Welcome\Welcome;
 function Calc()
 {
     $name = Welcome();
-
     line('What is the result of the expression?');
-
     for ($i = 0; $i < 3; ++$i) {
         $num1 = rand(1, 10);
         $num2 = rand(1, 10);
@@ -21,7 +19,6 @@ function Calc()
 
         line("Question: {$num1} {$operation} {$num2}");
         $answer = prompt('Your answer');
-
         switch ($operation) {
             case '+':
                 $result = $num1 + $num2;
