@@ -3,7 +3,7 @@
 <a href="https://codeclimate.com/github/Vitmann/php-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/f7da0a2ef388e27bd07e/maintainability" /></a>
 
 ## Запуск проекта
-Для запуска проекта игр необходимо устрановить зависимости командой:
+Для запуска проекта игр необходимо установить зависимости командой:
 ```
 make install
 ```
