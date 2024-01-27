@@ -37,10 +37,10 @@ function Prime(): void
         if ($answer == primeCheck($number)) {
             line('Correct!');
         } else {
-            line($answer . ' is wrong answer ;(. Correct answer was ' . primeCheck($number));
-            line("Let's try again, " . $name . '!');
+            line("{$answer} is wrong answer ;(. Correct answer was " . primeCheck($number));
+            line("Let's try again, {$name}!");
             return;
         }
     }
-    line('Congratulations, ' . $name . '!');
+    line("Congratulations, {$name}!");
 }

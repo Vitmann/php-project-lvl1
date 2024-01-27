@@ -19,7 +19,7 @@ function Calc()
         $operations = ['+', '-', '*'];
         $operation = $operations[rand(0, 2)];
 
-        line('Question: ' . $num1 . ' ' . $operation . ' ' . $num2);
+        line("Question: {$num1}  {$operation}  {$num2}");
         $answer = prompt('Your answer');
 
         switch ($operation) {
@@ -37,10 +37,10 @@ function Calc()
         if ($result == $answer) {
             line('Correct!');
         } else {
-            line($answer . ' is wrong answer ;(. Correct answer was ' . $result);
-            line("Let's try again, " . $name . '!');
+            line("{$answer}  is wrong answer ;(. Correct answer was  {$result}");
+            line("Let's try again, {$name}!");
             return;
         }
     }
-    line('Congratulations, ' . $name . '!');
+    line("Congratulations, {$name}!");
 }

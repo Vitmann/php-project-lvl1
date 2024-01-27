@@ -23,16 +23,16 @@ function Gcd()
     for ($i = 0; $i < 3; ++$i) {
         $num1 = rand(1, 10);
         $num2 = rand(1, 10);
-        line('Question: ' . $num1 . ' ' . $num2);
+        line("Question: {$num1} {$num2}");
         $answer = prompt('Your answer ');
 
         if ($answer == get_greatest_common_divisor($num1, $num2)) {
             line('Correct!');
         } else {
-            line($answer . ' is wrong answer ;(. Correct answer was ' . get_greatest_common_divisor($num1, $num2));
-            line("Let's try again, " . $name . '!');
+            line("{$answer} is wrong answer ;(. Correct answer was " .  get_greatest_common_divisor($num1, $num2));
+            line("Let's try again, {$name}!");
             return;
         }
     }
-    line('Congratulations, ' . $name . '!');
+    line("Congratulations, {$name}!");
 }

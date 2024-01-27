@@ -16,7 +16,7 @@ function Even()
     $number = [4, 6, 7];
 
     foreach ($number as $num) {
-        line('Question: ' . $num);
+        line("Question: {$num}");
         $answer = prompt('Enter your answer');
         if ($num % 2 === 0) {
             $even = 'yes';
@@ -27,10 +27,10 @@ function Even()
         if ($even === $answer) {
             line('Correct!');
         } else {
-            line($answer .  ' is wrong answer ;(. Correct answer was ' . $even);
-            line("Let's try again, " . $name . '!');
+            line("{$answer} is wrong answer ;(. Correct answer was {$even}");
+            line("Let's try again, {$name}!");
             return;
         }
     }
-    line('Congratulations, ' . $name . '!');
+    line("Congratulations, {$name}!");
 }

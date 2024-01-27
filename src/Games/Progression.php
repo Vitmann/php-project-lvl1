@@ -33,10 +33,10 @@ function Progressive()
         if ($userAnswer == $realAnswer) {
             line('Correct!');
         } else {
-            line($userAnswer . ' is wrong answer ;(. Correct answer was ' . $realAnswer);
-            line("Let's try again, " . $name . '!');
+            line("{$userAnswer} is wrong answer ;(. Correct answer was {$realAnswer}");
+            line("Let's try again, {$name}!");
             return;
         }
     }
-    line('Congratulations, ' . $name . '!');
+    line("Congratulations, {$name}!");
 }
