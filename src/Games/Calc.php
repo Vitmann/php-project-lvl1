@@ -19,7 +19,7 @@ function Calc()
         $operations = ['+', '-', '*'];
         $operation = $operations[rand(0, 2)];
 
-        line("Question: {$num1}  {$operation}  {$num2}");
+        line("Question: {$num1} {$operation} {$num2}");
         $answer = prompt('Your answer');
 
         switch ($operation) {
