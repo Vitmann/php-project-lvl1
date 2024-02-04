@@ -18,13 +18,13 @@ function Correct(): void
     line('Correct!');
 }
 
-function WrongAnswerMessage($userAnswer, $correctAnswer, $name)
+function WrongAnswerMessage(mixed $userAnswer, mixed $correctAnswer, string $name): void
 {
     line("{$userAnswer}  is wrong answer ;(. Correct answer was  {$correctAnswer}");
     line("Let's try again, {$name}!");
 }
 
-function Congratulations($name)
+function Congratulations(string $name): void
 {
     line("Congratulations, {$name}!");
 }
