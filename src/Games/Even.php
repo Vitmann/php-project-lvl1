@@ -1,15 +1,17 @@
 <?php
 
-namespace BrainGames\Even;
+namespace BrainGames\Games;
 
+use function BrainGames\Welcome\Congratulations;
+use function BrainGames\Welcome\Correct;
 use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 
 //Игра: "Проверка на чётность"
-function Even()
+function Even(): void
 {
-
     $name = Welcome();
     line('Answer "yes" if the number is even, otherwise answer "no".');
 
@@ -18,19 +20,15 @@ function Even()
     foreach ($number as $num) {
         line("Question: {$num}");
         $answer = prompt('Enter your answer');
-        if ($num % 2 === 0) {
-            $even = 'yes';
-        } else {
-            $even = 'no';
-        }
+
+        $even = ($num % 2 === 0) ? 'yes' : 'no';
 
         if ($even === $answer) {
-            line('Correct!');
+            Correct();
         } else {
-            line("{$answer} is wrong answer ;(. Correct answer was {$even}");
-            line("Let's try again, {$name}!");
+            WrongAnswerMessage($answer, $even, $name);
             return;
         }
     }
-    line("Congratulations, {$name}!");
+    Congratulations($name);
 }

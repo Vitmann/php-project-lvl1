@@ -1,8 +1,10 @@
 <?php
 
-namespace BrainGames\Progressive;
+namespace BrainGames\Games;
 
+use function BrainGames\Welcome\Correct;
 use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 
@@ -26,10 +28,9 @@ function Progressive()
         line('Question: ' . implode(" ", $workString));
         $userAnswer = prompt('Your answer ');
         if ($userAnswer == $realAnswer) {
-            line('Correct!');
+            Correct();
         } else {
-            line("{$userAnswer} is wrong answer ;(. Correct answer was {$realAnswer}");
-            line("Let's try again, {$name}!");
+            WrongAnswerMessage($userAnswer, $realAnswer, $name);
             return;
         }
     }

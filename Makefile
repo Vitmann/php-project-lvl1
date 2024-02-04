@@ -17,7 +17,7 @@ brain-progression:
 	./bin/brain-progression #Игра "Арифметическая прогрессия"
 
 brain-gcd:
-	./bin/brain-gcd # Игра НОД наибольший общий делитель
+	./bin/brain-gcd #Игра НОД наибольший общий делитель
 
 brain-calc:
 	./bin/brain-calc #Калькулятор

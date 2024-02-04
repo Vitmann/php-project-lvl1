@@ -1,8 +1,11 @@
 <?php
 
-namespace BrainGames\Prime;
+namespace BrainGames\Games;
 
+use function BrainGames\Welcome\Congratulations;
+use function BrainGames\Welcome\Correct;
 use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 
@@ -31,16 +34,15 @@ function Prime(): void
     for ($a = 0; $a < 3; ++$a) {
         $number = $arrNumber[array_rand($arrNumber, 1)];
 
-        line('Question: ' . $number);
+        line('Question: '.$number);
         $answer = prompt('Your answer');
 
         if ($answer == primeCheck($number)) {
-            line('Correct!');
+            Correct();
         } else {
-            line("{$answer} is wrong answer ;(. Correct answer was " . primeCheck($number));
-            line("Let's try again, {$name}!");
+            WrongAnswerMessage($answer, primeCheck($number), $name);
             return;
         }
     }
-    line("Congratulations, {$name}!");
+    Congratulations($name);
 }

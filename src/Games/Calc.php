@@ -1,7 +1,10 @@
 <?php
 
-namespace BrainGames\Calc;
+namespace BrainGames\Games;
 
+use function BrainGames\Welcome\Congratulations;
+use function BrainGames\Welcome\Correct;
+use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 use function BrainGames\Welcome\Welcome;
@@ -32,12 +35,11 @@ function Calc()
         }
 
         if ($result == $answer) {
-            line('Correct!');
+            Correct();
         } else {
-            line("{$answer}  is wrong answer ;(. Correct answer was  {$result}");
-            line("Let's try again, {$name}!");
+            WrongAnswerMessage($answer, $result, $name);
             return;
         }
     }
-    line("Congratulations, {$name}!");
+   Congratulations($name);
 }

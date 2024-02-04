@@ -1,8 +1,10 @@
 <?php
 
-namespace BrainGames\Gcd;
+namespace BrainGames\Games;
 
+use function BrainGames\Welcome\Correct;
 use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 
@@ -15,7 +17,7 @@ function get_greatest_common_divisor(int $a, int $b): int
 }
 
 //Игра "НОД"
-function Gcd()
+function Gcd(): void
 {
     $name = Welcome();
     line('Find the greatest common divisor of given numbers.');
@@ -27,10 +29,9 @@ function Gcd()
         $answer = prompt('Your answer ');
 
         if ($answer == get_greatest_common_divisor($num1, $num2)) {
-            line('Correct!');
+            Correct();
         } else {
-            line("{$answer} is wrong answer ;(. Correct answer was " .  get_greatest_common_divisor($num1, $num2));
-            line("Let's try again, {$name}!");
+            WrongAnswerMessage($answer, get_greatest_common_divisor($num1, $num2), $name);
             return;
         }
     }
