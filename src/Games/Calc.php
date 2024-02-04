@@ -10,7 +10,7 @@ use function cli\prompt;
 use function BrainGames\Welcome\Welcome;
 
 //Игра: "Калькулятор"
-function Calc()
+function Calc(): void
 {
     $name = Welcome();
     line('What is the result of the expression?');
@@ -41,5 +41,5 @@ function Calc()
             return;
         }
     }
-   Congratulations($name);
+    Congratulations($name);
 }

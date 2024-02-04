@@ -22,10 +22,10 @@ function Progressive()
                 $realAnswer = $value;
                 $value = '..';
             }
-            $workString[] = (string)$value;
+            $workString[] = (string) $value;
         }
         line('What number is missing in the progression?');
-        line('Question: ' . implode(" ", $workString));
+        line('Question: '.implode(" ", $workString));
         $userAnswer = prompt('Your answer ');
         if ($userAnswer == $realAnswer) {
             Correct();
