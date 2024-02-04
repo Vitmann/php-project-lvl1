@@ -3,7 +3,7 @@
 namespace BrainGames\Games;
 
 use function BrainGames\Welcome\Correct;
-use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WelcomeAndAskName;
 use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
@@ -11,7 +11,7 @@ use function cli\prompt;
 //Игра "Арифметическая прогрессия"
 function Progressive()
 {
-    $name = Welcome();
+    $name = WelcomeAndAskName();
     for ($a = 0; $a < 3; ++$a) {
         $string = range(2, 22, rand(2, 4));
         $indexHideValue = array_rand($string, 1);

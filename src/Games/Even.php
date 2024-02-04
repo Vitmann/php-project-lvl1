@@ -4,7 +4,7 @@ namespace BrainGames\Games;
 
 use function BrainGames\Welcome\Congratulations;
 use function BrainGames\Welcome\Correct;
-use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WelcomeAndAskName;
 use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
@@ -12,8 +12,8 @@ use function cli\prompt;
 //Игра: "Проверка на чётность"
 function Even(): void
 {
-    $name = Welcome();
-    line('Answer "yes" if the number is even, otherwise answer "no".');
+    $name = WelcomeAndAskName();
+    EvenTask();
 
     $number = [4, 6, 7];
 
@@ -31,4 +31,9 @@ function Even(): void
         }
     }
     Congratulations($name);
+}
+
+function EvenTask (): void
+{
+    line('Answer "yes" if the number is even, otherwise answer "no".');
 }

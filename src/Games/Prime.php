@@ -4,7 +4,7 @@ namespace BrainGames\Games;
 
 use function BrainGames\Welcome\Congratulations;
 use function BrainGames\Welcome\Correct;
-use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WelcomeAndAskName;
 use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
@@ -26,7 +26,7 @@ function primeCheck(int $number): string
 
 function Prime(): void
 {
-    $name = Welcome();
+    $name = WelcomeAndAskName();
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
 
     $arrNumber = array(2, 3, 5, 7, 11, 13, 17, 19, 23, 1, 4, 6, 8);

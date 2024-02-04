@@ -5,7 +5,7 @@ namespace BrainGames\Welcome;
 use function cli\line;
 use function cli\prompt;
 
-function Welcome(): string
+function WelcomeAndAskName(): string
 {
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
@@ -28,3 +28,13 @@ function Congratulations(string $name): void
 {
     line("Congratulations, {$name}!");
 }
+
+
+
+
+
+
+
+
+
+

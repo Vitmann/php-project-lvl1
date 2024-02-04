@@ -3,7 +3,7 @@
 namespace BrainGames\Games;
 
 use function BrainGames\Welcome\Correct;
-use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WelcomeAndAskName;
 use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
@@ -19,7 +19,7 @@ function get_greatest_common_divisor(int $a, int $b): int
 //Игра "НОД"
 function Gcd(): void
 {
-    $name = Welcome();
+    $name = WelcomeAndAskName();
     line('Find the greatest common divisor of given numbers.');
 
     for ($i = 0; $i < 3; ++$i) {

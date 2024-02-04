@@ -7,32 +7,23 @@ use function BrainGames\Welcome\Correct;
 use function BrainGames\Welcome\WrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Welcome\Welcome;
+use function BrainGames\Welcome\WelcomeAndAskName;
 
 //Игра: "Калькулятор"
 function Calc(): void
 {
-    $name = Welcome();
-    line('What is the result of the expression?');
+    $name = WelcomeAndAskName();
+    CalkTask();
+
     for ($i = 0; $i < 3; ++$i) {
         $num1 = rand(1, 10);
         $num2 = rand(1, 10);
         $operations = ['+', '-', '*'];
         $operation = $operations[rand(0, 2)];
 
-        line("Question: {$num1} {$operation} {$num2}");
-        $answer = prompt('Your answer');
-        switch ($operation) {
-            case '+':
-                $result = $num1 + $num2;
-                break;
-            case '-':
-                $result = $num1 - $num2;
-                break;
-            case '*':
-                $result = $num1 * $num2;
-                break;
-        }
+        $answer = AskUserAnswer($num1, $operation, $num2);
+
+        $result = CalculateResult($operation, $num1, $num2);
 
         if ($result == $answer) {
             Correct();
@@ -42,4 +33,37 @@ function Calc(): void
         }
     }
     Congratulations($name);
+}
+
+/**
+ * @param  string  $operation
+ * @param  int  $num1
+ * @param  int  $num2
+ * @return float|int
+ */
+function CalculateResult(string $operation, int $num1, int $num2): int|float
+{
+    switch ($operation) {
+        case '+':
+            $result = $num1 + $num2;
+            break;
+        case '-':
+            $result = $num1 - $num2;
+            break;
+        case '*':
+            $result = $num1 * $num2;
+            break;
+    }
+    return $result;
+}
+
+function CalkTask (): void
+{
+    line('What is the result of the expression?');
+}
+
+function AskUserAnswer ($num1, $operation, $num2): string
+{
+    line("Question: {$num1} {$operation} {$num2}");
+    return prompt('Your answer');
 }
