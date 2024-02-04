@@ -33,7 +33,7 @@ function Even(): void
     Congratulations($name);
 }
 
-function EvenTask (): void
+function EvenTask(): void
 {
     line('Answer "yes" if the number is even, otherwise answer "no".');
 }

@@ -57,12 +57,12 @@ function CalculateResult(string $operation, int $num1, int $num2): int|float
     return $result;
 }
 
-function CalkTask (): void
+function CalkTask(): void
 {
     line('What is the result of the expression?');
 }
 
-function AskUserAnswer ($num1, $operation, $num2): string
+function AskUserAnswer($num1, $operation, $num2): string
 {
     line("Question: {$num1} {$operation} {$num2}");
     return prompt('Your answer');

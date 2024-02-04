@@ -13,7 +13,6 @@ function Progressive(): void
 {
     $name = WelcomeAndAskName();
     for ($a = 0; $a < 3; ++$a) {
-
         $string = range(2, 22, rand(2, 4));
         $indexHideValue = array_rand($string, 1);
         $workString = [];

@@ -28,13 +28,3 @@ function Congratulations(string $name): void
 {
     line("Congratulations, {$name}!");
 }
-
-
-
-
-
-
-
-
-
-
