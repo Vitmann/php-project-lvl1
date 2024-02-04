@@ -41,8 +41,9 @@ function Calc(): void
  * @param  int  $num2
  * @return float|int
  */
-function CalculateResult(string $operation, int $num1, int $num2): int|float
+function CalculateResult(string $operation, int $num1, int $num2): int
 {
+    $result = 0;
     switch ($operation) {
         case '+':
             $result = $num1 + $num2;
@@ -62,7 +63,7 @@ function CalkTask(): void
     line('What is the result of the expression?');
 }
 
-function AskUserAnswer($num1, $operation, $num2): string
+function AskUserAnswer(int $num1, string $operation, int $num2): string
 {
     line("Question: {$num1} {$operation} {$num2}");
     return prompt('Your answer');

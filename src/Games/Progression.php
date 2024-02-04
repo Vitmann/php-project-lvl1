@@ -34,13 +34,6 @@ function Progressive(): void
     line("Congratulations, {$name}!");
 }
 
-/**
- * @param  array  $string
- * @param  int  $indexHideValue
- * @param  mixed  $realAnswer
- * @param  array  $workString
- * @return array
- */
 function ReplaceRandomNumber(array $string, int $indexHideValue, int $realAnswer, array $workString): array
 {
     foreach ($string as $value) {
