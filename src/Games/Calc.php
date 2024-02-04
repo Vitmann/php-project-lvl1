@@ -35,12 +35,6 @@ function Calc(): void
     Congratulations($name);
 }
 
-/**
- * @param  string  $operation
- * @param  int  $num1
- * @param  int  $num2
- * @return float|int
- */
 function CalculateResult(string $operation, int $num1, int $num2): int
 {
     $result = 0;
