@@ -25,7 +25,7 @@ function Progressive()
             $workString[] = (string) $value;
         }
         line('What number is missing in the progression?');
-        line('Question: '.implode(" ", $workString));
+        line('Question: ' . implode(" ", $workString));
         $userAnswer = prompt('Your answer ');
         if ($userAnswer == $realAnswer) {
             Correct();

@@ -1,4 +1,5 @@
 <?php
+
 namespace BrainGames\Welcome;
 
 use function cli\line;
@@ -12,19 +13,18 @@ function Welcome(): string
     return $name;
 }
 
-function Correct (): void
+function Correct(): void
 {
     line('Correct!');
 }
 
-function WrongAnswerMessage ($userAnswer, $correctAnswer, $name ) {
+function WrongAnswerMessage($userAnswer, $correctAnswer, $name)
+{
     line("{$userAnswer}  is wrong answer ;(. Correct answer was  {$correctAnswer}");
     line("Let's try again, {$name}!");
 }
 
-function Congratulations ($name)
+function Congratulations($name)
 {
     line("Congratulations, {$name}!");
 }
-
-

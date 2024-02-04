@@ -34,7 +34,7 @@ function Prime(): void
     for ($a = 0; $a < 3; ++$a) {
         $number = $arrNumber[array_rand($arrNumber, 1)];
 
-        line('Question: '.$number);
+        line('Question: ' . $number);
         $answer = prompt('Your answer');
 
         if ($answer == primeCheck($number)) {
