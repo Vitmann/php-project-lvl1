@@ -1,43 +1,49 @@
 <?php
 
-namespace BrainGames\Games;
+namespace BrainGames\Games\Progressive;
 
-use function BrainGames\Welcome\Correct;
-use function BrainGames\Welcome\WelcomeAndAskName;
-use function BrainGames\Welcome\WrongAnswerMessage;
+use function BrainGames\Engine\congratulations;
+use function BrainGames\Engine\correct;
+use function BrainGames\Engine\askNameAndSayWelcome;
+use function BrainGames\Engine\wrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 
 //Игра "Арифметическая прогрессия"
 function Progressive(): void
 {
-    $name = WelcomeAndAskName();
+    $name = askNameAndSayWelcome();
     for ($a = 0; $a < 3; ++$a) {
-        $string = range(2, 22, rand(2, 4));
-        $indexHideValue = array_rand($string, 1);
+        $generateString = range(2, 22, rand(2, 4));
+        $indexHideValue = array_rand($generateString, 1);
         $workString = [];
         $realAnswer = 0;
 
-        list($realAnswer, $workString) = ReplaceRandomNumber($string, $indexHideValue, $realAnswer, $workString);
+        list($realAnswer, $workString) = ReplaceRandomNum($generateString, $indexHideValue, $realAnswer, $workString);
 
-        line('What number is missing in the progression?');
-        line('Question: ' . implode(" ", $workString));
-        $userAnswer = prompt('Your answer ');
+        $userAnswer = askQuestionAndEnterAnswer($workString);
 
-        if ($userAnswer == $realAnswer) {
-            Correct();
+        if ($userAnswer === $realAnswer) {
+            correct();
         } else {
-            WrongAnswerMessage($userAnswer, $realAnswer, $name);
+            wrongAnswerMessage($userAnswer, $realAnswer, $name);
             return;
         }
     }
-    line("Congratulations, {$name}!");
+    congratulations($name);
 }
 
-function ReplaceRandomNumber(array $string, int $indexHideValue, int $realAnswer, array $workString): array
+function askQuestionAndEnterAnswer(mixed $workString): string
+{
+    line('What number is missing in the progression?');
+    line('Question: ' . implode(" ", $workString));
+    return prompt('Your answer ');
+}
+
+function ReplaceRandomNum(array $string, int $indexHideValue, int $realAnswer, array $workString): array
 {
     foreach ($string as $value) {
-        if ($value == $string[$indexHideValue]) {
+        if ($value === $string[$indexHideValue]) {
             $realAnswer = $value;
             $value = '..';
         }

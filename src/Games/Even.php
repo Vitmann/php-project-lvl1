@@ -1,36 +1,39 @@
 <?php
 
-namespace BrainGames\Games;
+namespace BrainGames\Games\Even;
 
-use function BrainGames\Welcome\Congratulations;
-use function BrainGames\Welcome\Correct;
-use function BrainGames\Welcome\WelcomeAndAskName;
-use function BrainGames\Welcome\WrongAnswerMessage;
+use function BrainGames\Engine\congratulations;
+use function BrainGames\Engine\correct;
+use function BrainGames\Engine\askNameAndSayWelcome;
+use function BrainGames\Engine\wrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 
 //Игра: "Проверка на чётность"
 function Even(): void
 {
-    $name = WelcomeAndAskName();
+    $name = askNameAndSayWelcome();
     EvenTask();
+    $arrayNumbers = [4, 6, 7];
 
-    $number = [4, 6, 7];
+    foreach ($arrayNumbers as $number) {
+        $userAnswer = askQuestionAndEnterAnswer($number);
+        $evenOrNot = ($number % 2 === 0) ? 'yes' : 'no';
 
-    foreach ($number as $num) {
-        line("Question: {$num}");
-        $answer = prompt('Enter your answer');
-
-        $even = ($num % 2 === 0) ? 'yes' : 'no';
-
-        if ($even === $answer) {
-            Correct();
+        if ($evenOrNot === $userAnswer) {
+            correct();
         } else {
-            WrongAnswerMessage($answer, $even, $name);
+            wrongAnswerMessage($userAnswer, $evenOrNot, $name);
             return;
         }
     }
-    Congratulations($name);
+    congratulations($name);
+}
+
+function askQuestionAndEnterAnswer(int $num): string
+{
+    line("Question: {$num}");
+    return prompt('Enter your answer');
 }
 
 function EvenTask(): void

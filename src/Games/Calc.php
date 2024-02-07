@@ -1,19 +1,19 @@
 <?php
 
-namespace BrainGames\Games;
+namespace BrainGames\Games\Calc;
 
-use function BrainGames\Welcome\Congratulations;
-use function BrainGames\Welcome\Correct;
-use function BrainGames\Welcome\WrongAnswerMessage;
+use function BrainGames\Engine\congratulations;
+use function BrainGames\Engine\correct;
+use function BrainGames\Engine\wrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Welcome\WelcomeAndAskName;
+use function BrainGames\Engine\askNameAndSayWelcome;
 
 //Игра: "Калькулятор"
-function Calc(): void
+function calc(): void
 {
-    $name = WelcomeAndAskName();
-    CalkTask();
+    $name = askNameAndSayWelcome();
+    calkTask();
 
     for ($i = 0; $i < 3; ++$i) {
         $num1 = rand(1, 10);
@@ -21,21 +21,21 @@ function Calc(): void
         $operations = ['+', '-', '*'];
         $operation = $operations[rand(0, 2)];
 
-        $answer = AskUserAnswer($num1, $operation, $num2);
+        $answer = askUserAnswer($num1, $operation, $num2);
 
-        $result = CalculateResult($operation, $num1, $num2);
+        $result = calculateResult($operation, $num1, $num2);
 
-        if ($result == $answer) {
-            Correct();
+        if ($result === $answer) {
+            correct();
         } else {
-            WrongAnswerMessage($answer, $result, $name);
+            wrongAnswerMessage($answer, $result, $name);
             return;
         }
     }
-    Congratulations($name);
+    congratulations($name);
 }
 
-function CalculateResult(string $operation, int $num1, int $num2): int
+function calculateResult(string $operation, int $num1, int $num2): int
 {
     $result = 0;
     switch ($operation) {
@@ -52,12 +52,12 @@ function CalculateResult(string $operation, int $num1, int $num2): int
     return $result;
 }
 
-function CalkTask(): void
+function calkTask(): void
 {
     line('What is the result of the expression?');
 }
 
-function AskUserAnswer(int $num1, string $operation, int $num2): string
+function askUserAnswer(int $num1, string $operation, int $num2): int
 {
     line("Question: {$num1} {$operation} {$num2}");
     return prompt('Your answer');

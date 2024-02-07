@@ -1,11 +1,11 @@
 <?php
 
-namespace BrainGames\Welcome;
+namespace BrainGames\Engine;
 
 use function cli\line;
 use function cli\prompt;
 
-function WelcomeAndAskName(): string
+function askNameAndSayWelcome(): string
 {
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
@@ -13,18 +13,18 @@ function WelcomeAndAskName(): string
     return $name;
 }
 
-function Correct(): void
+function correct(): void
 {
     line('Correct!');
 }
 
-function WrongAnswerMessage(mixed $userAnswer, mixed $correctAnswer, string $name): void
+function wrongAnswerMessage(mixed $userAnswer, mixed $correctAnswer, string $name): void
 {
     line("{$userAnswer}  is wrong answer ;(. Correct answer was  {$correctAnswer}");
     line("Let's try again, {$name}!");
 }
 
-function Congratulations(string $name): void
+function congratulations(string $name): void
 {
     line("Congratulations, {$name}!");
 }
