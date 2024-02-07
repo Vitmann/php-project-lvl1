@@ -33,7 +33,7 @@ function Progressive(): void
     congratulations($name);
 }
 
-function askQuestionAndEnterAnswer(mixed $workString): string
+function askQuestionAndEnterAnswer(mixed $workString): int
 {
     line('What number is missing in the progression?');
     line('Question: ' . implode(" ", $workString));
