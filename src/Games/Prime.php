@@ -2,32 +2,34 @@
 
 namespace BrainGames\Games\Prime;
 
-use function BrainGames\Engine\congratulations;
-use function BrainGames\Engine\correct;
+use function BrainGames\Engine\printCongratulations;
+use function BrainGames\Engine\printCorrectMessage;
 use function BrainGames\Engine\askNameAndSayWelcome;
-use function BrainGames\Engine\wrongAnswerMessage;
+use function BrainGames\Engine\printWrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 
+use const BrainGames\Engine\STEPS;
+
 //Игра "Простое ли число?"
 
-function Prime(): void
+function prime(): void
 {
     $name = askNameAndSayWelcome();
-    $arrNumber = array(2, 3, 5, 7, 11, 13, 17, 19, 23, 1, 4, 6, 8);
+    $arrNumber = [2, 3, 5, 7, 11, 13, 17, 19, 23, 1, 4, 6, 8];
 
-    for ($a = 0; $a < 3; ++$a) {
-        $number = $arrNumber[array_rand($arrNumber, 1)];
+    for ($a = 0; $a < STEPS; ++$a) {
+        $number = $arrNumber[array_rand($arrNumber)];
         $answer = askQuestionAndEnterAnswer($number);
 
-        if ($answer === primeCheck($number)) {
-            correct();
+        if ($answer === checkIfPrime($number)) {
+            printCorrectMessage();
         } else {
-            wrongAnswerMessage($answer, primeCheck($number), $name);
+            printWrongAnswerMessage($answer, checkIfPrime($number), $name);
             return;
         }
     }
-    congratulations($name);
+    printCongratulations($name);
 }
 
 function askQuestionAndEnterAnswer(int $number): string
@@ -37,7 +39,7 @@ function askQuestionAndEnterAnswer(int $number): string
     return prompt('Your answer');
 }
 
-function primeCheck(int $number): string
+function checkIfPrime(int $number): string
 {
     if ($number === 1) {
         return 'no';

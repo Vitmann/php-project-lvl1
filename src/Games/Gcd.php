@@ -2,32 +2,37 @@
 
 namespace BrainGames\Games\Gcd;
 
-use function BrainGames\Engine\congratulations;
-use function BrainGames\Engine\correct;
+use function BrainGames\Engine\printCongratulations;
+use function BrainGames\Engine\printCorrectMessage;
 use function BrainGames\Engine\askNameAndSayWelcome;
-use function BrainGames\Engine\wrongAnswerMessage;
+use function BrainGames\Engine\printWrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 
+use const BrainGames\Engine\STEPS;
+
+const MIN_RANDOM_NUMBER = 1;
+const MAX_RANDOM_NUMBER = 10;
+
 //Игра "НОД"
-function Gcd(): void
+function gcd(): void
 {
     $name = askNameAndSayWelcome();
 
-    for ($i = 0; $i < 3; ++$i) {
-        $randomNumber1 = rand(1, 10);
-        $randomNumber2 = rand(1, 10);
+    for ($i = 0; $i < STEPS; ++$i) {
+        $randomNumber1 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+        $randomNumber2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
         $userAnswer = askQuestionAndEnterAnswer($randomNumber1, $randomNumber2);
 
-        if ($userAnswer === get_greatest_common_divisor($randomNumber1, $randomNumber2)) {
-            correct();
+        if ($userAnswer === getGreatestCommonDivisor($randomNumber1, $randomNumber2)) {
+            printCorrectMessage();
         } else {
-            wrongAnswerMessage($userAnswer, get_greatest_common_divisor($randomNumber1, $randomNumber2), $name);
+            printWrongAnswerMessage($userAnswer, getGreatestCommonDivisor($randomNumber1, $randomNumber2), $name);
             return;
         }
     }
-    congratulations($name);
+    printCongratulations($name);
 }
 
 function askQuestionAndEnterAnswer(int $num1, int $num2): int
@@ -37,10 +42,10 @@ function askQuestionAndEnterAnswer(int $num1, int $num2): int
     return (int)prompt('Your answer ');
 }
 
-function get_greatest_common_divisor(int $a, int $b): int
+function getGreatestCommonDivisor(int $a, int $b): int
 {
     $large = max($a, $b);
     $small = min($a, $b);
     $remainder = $large % $small;
-    return 0 === $remainder ? $small : get_greatest_common_divisor($small, $remainder);
+    return 0 === $remainder ? $small : getGreatestCommonDivisor($small, $remainder);
 }

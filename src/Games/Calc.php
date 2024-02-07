@@ -2,37 +2,41 @@
 
 namespace BrainGames\Games\Calc;
 
-use function BrainGames\Engine\congratulations;
-use function BrainGames\Engine\correct;
-use function BrainGames\Engine\wrongAnswerMessage;
+use function BrainGames\Engine\printCongratulations;
+use function BrainGames\Engine\printCorrectMessage;
+use function BrainGames\Engine\printWrongAnswerMessage;
 use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\askNameAndSayWelcome;
 
+use const BrainGames\Engine\STEPS;
+
+const MIN_RANDOM_NUMBER = 1;
+const MAX_RANDOM_NUMBER = 10;
 //Игра: "Калькулятор"
 function calc(): void
 {
     $name = askNameAndSayWelcome();
     calkTask();
 
-    for ($i = 0; $i < 3; ++$i) {
-        $num1 = rand(1, 10);
-        $num2 = rand(1, 10);
+    for ($i = 0; $i < STEPS; ++$i) {
+        $randomNum1 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+        $randomNum2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         $operations = ['+', '-', '*'];
-        $operation = $operations[rand(0, 2)];
+        $operation = $operations[array_rand($operations)];
 
-        $answer = askUserAnswer($num1, $operation, $num2);
+        $answer = askUserAnswer($randomNum1, $operation, $randomNum2);
 
-        $result = calculateResult($operation, $num1, $num2);
+        $result = calculateResult($operation, $randomNum1, $randomNum2);
 
         if ($result === $answer) {
-            correct();
+            printCorrectMessage();
         } else {
-            wrongAnswerMessage($answer, $result, $name);
+            printWrongAnswerMessage($answer, $result, $name);
             return;
         }
     }
-    congratulations($name);
+    printCongratulations($name);
 }
 
 function calculateResult(string $operation, int $num1, int $num2): int
