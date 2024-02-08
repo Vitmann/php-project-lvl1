@@ -30,3 +30,21 @@ function printCongratulations(string $name): void
 {
     line("Congratulations, {$name}!");
 }
+
+function askQuestionAndEnterAnswer(string $title, string $question): mixed
+{
+    line($title);
+    line($question);
+    return prompt('Your answer ');
+}
+
+function checkResult($result, $userAnswer, $name): bool
+{
+    if ($result === $userAnswer) {
+        printCorrectMessage();
+        return true;
+    } else {
+        printWrongAnswerMessage($userAnswer, $result, $name);
+        return false;
+    }
+}

@@ -2,12 +2,10 @@
 
 namespace BrainGames\Games\Prime;
 
+use function BrainGames\Engine\askQuestionAndEnterAnswer;
+use function BrainGames\Engine\checkResult;
 use function BrainGames\Engine\printCongratulations;
-use function BrainGames\Engine\printCorrectMessage;
 use function BrainGames\Engine\askNameAndSayWelcome;
-use function BrainGames\Engine\printWrongAnswerMessage;
-use function cli\line;
-use function cli\prompt;
 
 use const BrainGames\Engine\STEPS;
 
@@ -20,23 +18,16 @@ function prime(): void
 
     for ($a = 0; $a < STEPS; ++$a) {
         $number = $arrNumber[array_rand($arrNumber)];
-        $answer = askQuestionAndEnterAnswer($number);
+        $answer = askQuestionAndEnterAnswer(
+            'Answer "yes" if given number is prime. Otherwise answer "no".',
+            'Question: ' . $number
+        );
 
-        if ($answer === checkIfPrime($number)) {
-            printCorrectMessage();
-        } else {
-            printWrongAnswerMessage($answer, checkIfPrime($number), $name);
+        if (checkResult(checkIfPrime($number), $answer, $name) === false) {
             return;
         }
     }
     printCongratulations($name);
-}
-
-function askQuestionAndEnterAnswer(int $number): string
-{
-    line('Answer "yes" if given number is prime. Otherwise answer "no".');
-    line('Question: ' . $number);
-    return prompt('Your answer');
 }
 
 function checkIfPrime(int $number): string

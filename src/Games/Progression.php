@@ -2,12 +2,10 @@
 
 namespace BrainGames\Games\Progressive;
 
+use function BrainGames\Engine\askQuestionAndEnterAnswer;
+use function BrainGames\Engine\checkResult;
 use function BrainGames\Engine\printCongratulations;
-use function BrainGames\Engine\printCorrectMessage;
 use function BrainGames\Engine\askNameAndSayWelcome;
-use function BrainGames\Engine\printWrongAnswerMessage;
-use function cli\line;
-use function cli\prompt;
 
 use const BrainGames\Engine\STEPS;
 
@@ -27,23 +25,16 @@ function progressive(): void
 
         list($realAnswer, $workString) = replaceRandomNum($generateString, $indexHideValue, $realAnswer, $workString);
 
-        $userAnswer = askQuestionAndEnterAnswer($workString);
+        $userAnswer = (int) askQuestionAndEnterAnswer(
+            'What number is missing in the progression?',
+            'Question: ' . implode(" ", $workString)
+        );
 
-        if ($userAnswer === $realAnswer) {
-            printCorrectMessage();
-        } else {
-            printWrongAnswerMessage($userAnswer, $realAnswer, $name);
+        if (checkResult($realAnswer, $userAnswer, $name) === false) {
             return;
         }
     }
     printCongratulations($name);
-}
-
-function askQuestionAndEnterAnswer(mixed $workString): int
-{
-    line('What number is missing in the progression?');
-    line('Question: ' . implode(" ", $workString));
-    return prompt('Your answer ');
 }
 
 function replaceRandomNum(array $string, int $indexHideValue, int $realAnswer, array $workString): array
@@ -55,5 +46,5 @@ function replaceRandomNum(array $string, int $indexHideValue, int $realAnswer, a
         }
         $workString[] = (string) $value;
     }
-    return array($realAnswer, $workString);
+    return array((int)$realAnswer, $workString);
 }
