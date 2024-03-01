@@ -46,6 +46,8 @@ function calculateResult(string $operation, int $num1, int $num2)
             return $num1 - $num2;
         case '*':
             return $num1 * $num2;
-        default: break;
+        default:
+            break;
     }
+    return false;
 }
