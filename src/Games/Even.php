@@ -7,23 +7,36 @@ use function BrainGames\Engine\checkResult;
 use function BrainGames\Engine\printCongratulations;
 use function BrainGames\Engine\askNameAndSayWelcome;
 
+use const BrainGames\Engine\ROUNDS_COUNT;
+
+const MIN_RANDOM_NUMBER = 1;
+const MAX_RANDOM_NUMBER = 10;
+
 //Игра: "Проверка на чётность"
-function even(): void
+function runGameEven(): void
 {
     $name = askNameAndSayWelcome();
-    $arrayNumbers = [4, 6, 7];
 
-    foreach ($arrayNumbers as $number) {
+    for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
+        $number = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+
         $userAnswer = askQuestionAndEnterAnswer(
             'Answer "yes" if the number is even, otherwise answer "no".',
             "Question: {$number}"
         );
 
-        $evenOrNot = ($number % 2 === 0) ? 'yes' : 'no';
+        $result = isEven($number);
+        var_dump($result);
 
-        if (checkResult($evenOrNot, $userAnswer, $name) === false) {
+        if (checkResult($result, $userAnswer, $name) === false) {
             return;
         }
     }
+
     printCongratulations($name);
+}
+
+function isEven(int $number): string
+{
+    return ($number % 2 === 0) ? 'yes' : 'no';
 }

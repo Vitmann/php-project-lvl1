@@ -7,16 +7,17 @@ use function BrainGames\Engine\checkResult;
 use function BrainGames\Engine\printCongratulations;
 use function BrainGames\Engine\askNameAndSayWelcome;
 
-use const BrainGames\Engine\STEPS;
+use const BrainGames\Engine\ROUNDS_COUNT;
 
 const MIN_RANDOM_NUMBER = 1;
 const MAX_RANDOM_NUMBER = 10;
+
 //Игра: "Калькулятор"
-function calc(): void
+function runGameCalc(): void
 {
     $name = askNameAndSayWelcome();
 
-    for ($i = 0; $i < STEPS; ++$i) {
+    for ($i = 0; $i < ROUNDS_COUNT; ++$i) {
         $randomNum1 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         $randomNum2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         $operations = ['+', '-', '*'];
@@ -36,19 +37,15 @@ function calc(): void
     printCongratulations($name);
 }
 
-function calculateResult(string $operation, int $num1, int $num2): int
+function calculateResult(string $operation, int $num1, int $num2)
 {
-    $result = 0;
     switch ($operation) {
         case '+':
-            $result = $num1 + $num2;
-            break;
+            return $num1 + $num2;
         case '-':
-            $result = $num1 - $num2;
-            break;
+            return $num1 - $num2;
         case '*':
-            $result = $num1 * $num2;
-            break;
+            return $num1 * $num2;
+        default: break;
     }
-    return $result;
 }

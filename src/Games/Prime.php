@@ -7,30 +7,32 @@ use function BrainGames\Engine\checkResult;
 use function BrainGames\Engine\printCongratulations;
 use function BrainGames\Engine\askNameAndSayWelcome;
 
-use const BrainGames\Engine\STEPS;
+use const BrainGames\Engine\ROUNDS_COUNT;
+
+const MIN_RANDOM_NUMBER = 1;
+const MAX_RANDOM_NUMBER = 20;
 
 //Игра "Простое ли число?"
-
-function prime(): void
+function runGamePrime(): void
 {
     $name = askNameAndSayWelcome();
-    $arrNumber = [2, 3, 5, 7, 11, 13, 17, 19, 23, 1, 4, 6, 8];
 
-    for ($a = 0; $a < STEPS; ++$a) {
-        $number = $arrNumber[array_rand($arrNumber)];
-        $answer = askQuestionAndEnterAnswer(
+    for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
+        $number = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+
+        $userAnswer = askQuestionAndEnterAnswer(
             'Answer "yes" if given number is prime. Otherwise answer "no".',
             'Question: ' . $number
         );
 
-        if (checkResult(checkIfPrime($number), $answer, $name) === false) {
+        if (checkResult(isPrimeNumber($number), $userAnswer, $name) === false) {
             return;
         }
     }
     printCongratulations($name);
 }
 
-function checkIfPrime(int $number): string
+function isPrimeNumber(int $number): string
 {
     if ($number === 1) {
         return 'no';

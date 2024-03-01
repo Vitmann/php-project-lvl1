@@ -7,17 +7,17 @@ use function BrainGames\Engine\checkResult;
 use function BrainGames\Engine\printCongratulations;
 use function BrainGames\Engine\askNameAndSayWelcome;
 
-use const BrainGames\Engine\STEPS;
+use const BrainGames\Engine\ROUNDS_COUNT;
 
 const MIN_RANDOM_NUMBER = 1;
 const MAX_RANDOM_NUMBER = 10;
 
 //Игра "НОД"
-function gcd(): void
+function runGameGcd(): void
 {
     $name = askNameAndSayWelcome();
 
-    for ($i = 0; $i < STEPS; ++$i) {
+    for ($i = 0; $i < ROUNDS_COUNT; ++$i) {
         $randomNumber1 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         $randomNumber2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 

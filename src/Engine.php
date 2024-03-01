@@ -5,7 +5,7 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
-const STEPS = 3; //количество повторений игры
+const ROUNDS_COUNT = 3; //количество раундов в играх
 
 function askNameAndSayWelcome(): string
 {
@@ -20,9 +20,9 @@ function printCorrectMessage(): void
     line('Correct!');
 }
 
-function printWrongAnswerMessage(mixed $userAnswer, mixed $correctAnswer, string $name): void
+function printWrongAnswerMessage($userAnswer, $correctAnswer, string $name): void
 {
-    line("{$userAnswer}  is wrong answer ;(. Correct answer was  {$correctAnswer}");
+    line("{$userAnswer}  is wrong answer ;(. Correct answer was {$correctAnswer}");
     line("Let's try again, {$name}!");
 }
 
@@ -31,14 +31,14 @@ function printCongratulations(string $name): void
     line("Congratulations, {$name}!");
 }
 
-function askQuestionAndEnterAnswer(string $title, string $question): mixed
+function askQuestionAndEnterAnswer(string $title, string $question): string
 {
     line($title);
     line($question);
     return prompt('Your answer ');
 }
 
-function checkResult(mixed $result, mixed $userAnswer, string $name): bool
+function checkResult($result, $userAnswer, string $name): bool
 {
     if ($result === $userAnswer) {
         printCorrectMessage();
