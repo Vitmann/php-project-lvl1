@@ -20,7 +20,7 @@ function printCorrectMessage(): void
     line('Correct!');
 }
 
-function printWrongAnswerMessage($userAnswer, $correctAnswer, string $name): void
+function printWrongAnswerMessage(string $userAnswer, string $correctAnswer, string $name): void
 {
     line("{$userAnswer}  is wrong answer ;(. Correct answer was {$correctAnswer}");
     line("Let's try again, {$name}!");
@@ -38,7 +38,7 @@ function askQuestionAndEnterAnswer(string $title, string $question): string
     return prompt('Your answer ');
 }
 
-function checkResult($result, $userAnswer, string $name): bool
+function checkResult(string $result, string $userAnswer, string $name): bool
 {
     if ($result === $userAnswer) {
         printCorrectMessage();
