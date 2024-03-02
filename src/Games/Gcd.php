@@ -21,12 +21,12 @@ function runGameGcd(): void
         $randomNumber1 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         $randomNumber2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
-        $userAnswer = (int) askQuestionAndEnterAnswer(
+        $userAnswer = askQuestionAndEnterAnswer(
             'Find the greatest common divisor of given numbers.',
             "Question: {$randomNumber1} {$randomNumber2}"
         );
 
-        if (checkResult(getGreatestCommonDivisor($randomNumber1, $randomNumber2), $userAnswer, $name) === false) {
+        if (checkResult((string)getGreatestCommonDivisor($randomNumber1, $randomNumber2), $userAnswer, $name) === false) {
             return;
         }
     }

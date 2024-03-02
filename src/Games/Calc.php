@@ -23,7 +23,7 @@ function runGameCalc(): void
         $operations = ['+', '-', '*'];
         $operation = $operations[array_rand($operations)];
 
-        $answer  = (int) askQuestionAndEnterAnswer(
+        $answer  = askQuestionAndEnterAnswer(
             'What is the result of the expression?',
             "Question: {$randomNum1} {$operation} {$randomNum2}"
         );

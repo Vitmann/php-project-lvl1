@@ -27,7 +27,7 @@ function runGameProgressive(): void
 
         list($realAnswer, $workString) = replaceRandomNum($generateString, $indexHideValue, $realAnswer, $workString);
 
-        $userAnswer = (int) askQuestionAndEnterAnswer(
+        $userAnswer = askQuestionAndEnterAnswer(
             'What number is missing in the progression?',
             'Question: ' . implode(" ", $workString)
         );
