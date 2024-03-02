@@ -38,7 +38,7 @@ function askQuestionAndEnterAnswer(string $title, string $question): string
     return prompt('Your answer ');
 }
 
-function checkResult(mixed $result, mixed $userAnswer, string $name): bool
+function checkResult(string $result, string $userAnswer, string $name): bool
 {
     if ($result === $userAnswer) {
         printCorrectMessage();

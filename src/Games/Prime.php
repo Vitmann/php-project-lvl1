@@ -25,23 +25,23 @@ function runGamePrime(): void
             'Question: ' . $number
         );
 
-        if (checkResult(isPrimeNumber($number), $userAnswer, $name) === false) {
+        if (checkResult(isPrimeNumber($number) ? 'yes' : 'no', $userAnswer, $name) === false) {
             return;
         }
     }
     printCongratulations($name);
 }
 
-function isPrimeNumber(int $number): string
+function isPrimeNumber(int $number): bool
 {
     if ($number === 1) {
-        return 'no';
+        return false;
     }
 
     for ($i = 2; $i <= sqrt($number); $i++) {
         if ($number % $i === 0) {
-            return 'no';
+            return false;
         }
     }
-    return 'yes';
+    return true;
 }

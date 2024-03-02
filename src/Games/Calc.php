@@ -49,5 +49,4 @@ function calculateResult(string $operation, int $num1, int $num2)
         default:
             break;
     }
-    return false;
 }

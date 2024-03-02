@@ -25,10 +25,7 @@ function runGameEven(): void
             "Question: {$number}"
         );
 
-        $result = isEven($number);
-        var_dump($result);
-
-        if (checkResult($result, $userAnswer, $name) === false) {
+        if (checkResult(isEven($number) ? 'yes' : 'no', $userAnswer, $name) === false) {
             return;
         }
     }
@@ -36,7 +33,7 @@ function runGameEven(): void
     printCongratulations($name);
 }
 
-function isEven(int $number): string
+function isEven(int $number): bool
 {
-    return ($number % 2 === 0) ? 'yes' : 'no';
+    return $number % 2 === 0;
 }
