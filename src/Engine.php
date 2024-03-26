@@ -2,6 +2,7 @@
 
 namespace BrainGames\Engine;
 
+use function BrainGames\Cli\runCli;
 use function cli\line;
 use function cli\prompt;
 
@@ -9,10 +10,7 @@ const ROUNDS_COUNT = 3; //количество раундов в играх
 
 function askNameAndSayWelcome(): string
 {
-    line('Welcome to the Brain Games!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    return $name;
+    return runCli();
 }
 
 function printCorrectMessage(): void
