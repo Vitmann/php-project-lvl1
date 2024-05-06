@@ -15,17 +15,25 @@ const MAX_RANDOM_NUMBER = 10;
 //Игра: "Проверка на чётность"
 function runGameEven(): void
 {
+    $task = [];
+    for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
+        $task[] = [
+            'number' => rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
+            'result' => null
+        ];
+
+        $task[$a]['result'] = isEven($task[$a]['number']) ? 'yes' : 'no';
+    }
+
     $name = askNameAndSayWelcome();
 
-    for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
-        $number = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-
+    for ($a = 0; $a < count($task); ++$a) {
         $userAnswer = askQuestionAndEnterAnswer(
             'Answer "yes" if the number is even, otherwise answer "no".',
-            "Question: {$number}"
+            "Question: {$task[$a]['number']}"
         );
 
-        if (checkResult(isEven($number) ? 'yes' : 'no', $userAnswer, $name) === false) {
+        if (checkResult($task[$a]['result'], $userAnswer, $name) === false) {
             return;
         }
     }

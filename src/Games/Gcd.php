@@ -15,18 +15,26 @@ const MAX_RANDOM_NUMBER = 10;
 //Игра "НОД"
 function runGameGcd(): void
 {
-    $name = askNameAndSayWelcome();
-
+    $task = [];
     for ($i = 0; $i < ROUNDS_COUNT; ++$i) {
         $randomNumber1 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         $randomNumber2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
+        $task[] = [
+            'numbers' => "{$randomNumber1} {$randomNumber2}",
+            'result' => (string)getGreatestCommonDivisor($randomNumber1, $randomNumber2)
+        ];
+    }
+
+    $name = askNameAndSayWelcome();
+
+    for ($i = 0; $i < count($task); ++$i) {
         $userAnswer = askQuestionAndEnterAnswer(
             'Find the greatest common divisor of given numbers.',
-            "Question: {$randomNumber1} {$randomNumber2}"
+            "Question: {$task[$i]['numbers']}"
         );
 
-        if (checkResult((string)getGreatestCommonDivisor($randomNumber1, $randomNumber2), $userAnswer, $name) === false) {
+        if (checkResult($task[$i]['result'], $userAnswer, $name) === false) {
             return;
         }
     }

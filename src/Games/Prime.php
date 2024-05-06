@@ -15,17 +15,26 @@ const MAX_RANDOM_NUMBER = 20;
 //Игра "Простое ли число?"
 function runGamePrime(): void
 {
-    $name = askNameAndSayWelcome();
+    $task = [];
 
     for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
-        $number = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+        $task[] = [
+            'number' => rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
+            'result' => null
+        ];
 
+        $task[$a]['result'] = isPrimeNumber($task[$a]['number']) ? 'yes' : 'no';
+    }
+
+    $name = askNameAndSayWelcome();
+
+    for ($a = 0; $a < count($task); ++$a) {
         $userAnswer = askQuestionAndEnterAnswer(
             'Answer "yes" if given number is prime. Otherwise answer "no".',
-            'Question: ' . $number
+            "Question: {$task[$a]['number']}"
         );
 
-        if (checkResult(isPrimeNumber($number) ? 'yes' : 'no', $userAnswer, $name) === false) {
+        if (checkResult($task[$a]['result'], $userAnswer, $name) === false) {
             return;
         }
     }

@@ -15,22 +15,29 @@ const MAX_RANDOM_NUMBER = 10;
 //Игра: "Калькулятор"
 function runGameCalc(): void
 {
-    $name = askNameAndSayWelcome();
-
+    $task = [];
     for ($i = 0; $i < ROUNDS_COUNT; ++$i) {
         $randomNum1 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         $randomNum2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         $operations = ['+', '-', '*'];
         $operation = $operations[array_rand($operations)];
 
-        $answer  = askQuestionAndEnterAnswer(
+        $task[] = [
+            'expression' => "{$randomNum1} {$operation} {$randomNum2}",
+            'result' => calculateResult($operation, $randomNum1, $randomNum2)
+        ];
+    }
+
+    $name = askNameAndSayWelcome();
+
+    for ($i = 0; $i < count($task); ++$i) {
+        $expression = $task[$i];
+        $answer = askQuestionAndEnterAnswer(
             'What is the result of the expression?',
-            "Question: {$randomNum1} {$operation} {$randomNum2}"
+            "Question: {$task[$i]['expression']} "
         );
 
-        $result = calculateResult($operation, $randomNum1, $randomNum2);
-
-        if (checkResult($result, $answer, $name) === false) {
+        if (checkResult($task[$i]['result'], $answer, $name) === false) {
             return;
         }
     }

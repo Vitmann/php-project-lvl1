@@ -17,22 +17,39 @@ const MAX_STEP = 4; //максимальный шаг генерации стр�
 //Игра "Арифметическая прогрессия"
 function runGameProgressive(): void
 {
-    $name = askNameAndSayWelcome();
+    $task = [];
 
     for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
-        $generateString = range(RANGE_START, RANGE_END, rand(MIN_STEP, MAX_STEP));
-        $indexHideValue = array_rand($generateString);
-        $workString = [];
-        $realAnswer = 0;
+        $task[] = [
+            'string' => range(RANGE_START, RANGE_END, rand(MIN_STEP, MAX_STEP)),
+            'hideValue' => null,
+            'answer' => null
+        ];
 
-        list($realAnswer, $workString) = replaceRandomNum($generateString, $indexHideValue, $realAnswer, $workString);
+        $task[$a]['hideValue'] = array_rand($task[$a]['string']);
+        $task[$a]['answer'] = $task[$a]['string'][$task[$a]['hideValue']];
+    }
+
+    var_dump($task);
+
+    $name = askNameAndSayWelcome();
+
+    for ($a = 0; $a < count($task); ++$a) {
+        $workString = [];
+
+        list($task[$a]['answer'], $workString) = replaceRandomNum(
+            $task[$a]['string'],
+            $task[$a]['hideValue'],
+            $task[$a]['answer'],
+            $workString
+        );
 
         $userAnswer = askQuestionAndEnterAnswer(
             'What number is missing in the progression?',
             'Question: ' . implode(" ", $workString)
         );
 
-        if (checkResult($realAnswer, $userAnswer, $name) === false) {
+        if (checkResult($task[$a]['answer'], $userAnswer, $name) === false) {
             return;
         }
     }
@@ -46,7 +63,7 @@ function replaceRandomNum(array $string, int $indexHideValue, int $realAnswer, a
             $realAnswer = $value;
             $value = '..';
         }
-        $workString[] = (string) $value;
+        $workString[] = (string)$value;
     }
     return array((int)$realAnswer, $workString);
 }
