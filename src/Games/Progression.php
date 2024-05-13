@@ -28,17 +28,18 @@ function runGameProgressive(): void
             'answer' => (string)$string[$indexHideValue]
         ];
     }
-
-    play($task);
+var_dump($task);
+    //play($task);
 }
 
 function replaceRandomNum(array $string, int $indexHideValue): array
 {
+    $arr = [];
     foreach ($string as $value) {
         if ($value === $string[$indexHideValue]) {
             $value = '..';
         }
-        $readyString[] = $value;
+        $arr[] = $value;
     }
-    return $readyString;
+    return $arr;
 }
