@@ -28,8 +28,7 @@ function runGameProgressive(): void
             'answer' => (string)$string[$indexHideValue]
         ];
     }
-var_dump($task);
-    //play($task);
+    play($task);
 }
 
 function replaceRandomNum(array $string, int $indexHideValue): array
