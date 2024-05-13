@@ -8,30 +8,15 @@ use function cli\prompt;
 
 const ROUNDS_COUNT = 3; //количество раундов в играх
 
-function askNameAndSayWelcome(): string
-{
-    return runCli();
-}
-
-function printCorrectMessage(): void
-{
-    line('Correct!');
-}
-
 function printWrongAnswerMessage(string $userAnswer, string $correctAnswer, string $name): void
 {
     line("{$userAnswer}  is wrong answer ;(. Correct answer was {$correctAnswer}");
     line("Let's try again, {$name}!");
 }
 
-function printCongratulations(string $name): void
+function askQuestionAndEnterAnswer(string $questionText, string $question): string
 {
-    line("Congratulations, {$name}!");
-}
-
-function askQuestionAndEnterAnswer(string $title, string $question): string
-{
-    line($title);
+    line($questionText);
     line($question);
     return prompt('Your answer ');
 }
@@ -39,10 +24,27 @@ function askQuestionAndEnterAnswer(string $title, string $question): string
 function checkResult(string $result, string $userAnswer, string $name): bool
 {
     if ($result === $userAnswer) {
-        printCorrectMessage();
+        line('Correct!');
         return true;
     } else {
         printWrongAnswerMessage($userAnswer, $result, $name);
         return false;
     }
+}
+
+function play($array): void
+{
+    $name = runCli();
+
+    for ($i = 0; $i < count($array); ++$i) {
+        $answer = askQuestionAndEnterAnswer(
+            "{$array[$i]['questionText']}",
+            "Question: {$array[$i]['question']} "
+        );
+
+        if (checkResult($array[$i]['answer'], $answer, $name) === false) {
+            return;
+        }
+    }
+    line("Congratulations, {$name}!");
 }

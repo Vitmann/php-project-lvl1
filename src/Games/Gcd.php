@@ -2,10 +2,7 @@
 
 namespace BrainGames\Games\Gcd;
 
-use function BrainGames\Engine\askQuestionAndEnterAnswer;
-use function BrainGames\Engine\checkResult;
-use function BrainGames\Engine\printCongratulations;
-use function BrainGames\Engine\askNameAndSayWelcome;
+use function BrainGames\Engine\play;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
@@ -21,24 +18,13 @@ function runGameGcd(): void
         $randomNumber2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
         $task[] = [
-            'numbers' => "{$randomNumber1} {$randomNumber2}",
-            'result' => (string)getGreatestCommonDivisor($randomNumber1, $randomNumber2)
+            'questionText' => 'Find the greatest common divisor of given numbers.',
+            'question' => "{$randomNumber1} {$randomNumber2}",
+            'answer' => (string)getGreatestCommonDivisor($randomNumber1, $randomNumber2)
         ];
     }
 
-    $name = askNameAndSayWelcome();
-
-    for ($i = 0; $i < count($task); ++$i) {
-        $userAnswer = askQuestionAndEnterAnswer(
-            'Find the greatest common divisor of given numbers.',
-            "Question: {$task[$i]['numbers']}"
-        );
-
-        if (checkResult($task[$i]['result'], $userAnswer, $name) === false) {
-            return;
-        }
-    }
-    printCongratulations($name);
+    play($task);
 }
 
 function getGreatestCommonDivisor(int $a, int $b): int

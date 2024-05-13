@@ -2,10 +2,7 @@
 
 namespace BrainGames\Games\Calc;
 
-use function BrainGames\Engine\askQuestionAndEnterAnswer;
-use function BrainGames\Engine\checkResult;
-use function BrainGames\Engine\printCongratulations;
-use function BrainGames\Engine\askNameAndSayWelcome;
+use function BrainGames\Engine\play;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
@@ -23,25 +20,13 @@ function runGameCalc(): void
         $operation = $operations[array_rand($operations)];
 
         $task[] = [
-            'expression' => "{$randomNum1} {$operation} {$randomNum2}",
-            'result' => calculateResult($operation, $randomNum1, $randomNum2)
+            'questionText' => 'What is the result of the expression?',
+            'question' => "{$randomNum1} {$operation} {$randomNum2}",
+            'answer' => calculateResult($operation, $randomNum1, $randomNum2)
         ];
     }
 
-    $name = askNameAndSayWelcome();
-
-    for ($i = 0; $i < count($task); ++$i) {
-        $expression = $task[$i];
-        $answer = askQuestionAndEnterAnswer(
-            'What is the result of the expression?',
-            "Question: {$task[$i]['expression']} "
-        );
-
-        if (checkResult($task[$i]['result'], $answer, $name) === false) {
-            return;
-        }
-    }
-    printCongratulations($name);
+    play($task);
 }
 
 function calculateResult(string $operation, int $num1, int $num2)

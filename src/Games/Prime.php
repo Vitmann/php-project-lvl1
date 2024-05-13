@@ -2,10 +2,7 @@
 
 namespace BrainGames\Games\Prime;
 
-use function BrainGames\Engine\askQuestionAndEnterAnswer;
-use function BrainGames\Engine\checkResult;
-use function BrainGames\Engine\printCongratulations;
-use function BrainGames\Engine\askNameAndSayWelcome;
+use function BrainGames\Engine\play;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
@@ -19,26 +16,14 @@ function runGamePrime(): void
 
     for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
         $task[] = [
-            'number' => rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
-            'result' => null
+            'questionText' => 'Answer "yes" if given number is prime. Otherwise answer "no".',
+            'question' => rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
+            'answer' => null
         ];
 
-        $task[$a]['result'] = isPrimeNumber($task[$a]['number']) ? 'yes' : 'no';
+        $task[$a]['answer'] = (string)isPrimeNumber($task[$a]['question']) ? 'yes' : 'no';
     }
-
-    $name = askNameAndSayWelcome();
-
-    for ($a = 0; $a < count($task); ++$a) {
-        $userAnswer = askQuestionAndEnterAnswer(
-            'Answer "yes" if given number is prime. Otherwise answer "no".',
-            "Question: {$task[$a]['number']}"
-        );
-
-        if (checkResult($task[$a]['result'], $userAnswer, $name) === false) {
-            return;
-        }
-    }
-    printCongratulations($name);
+    play($task);
 }
 
 function isPrimeNumber(int $number): bool

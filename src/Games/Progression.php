@@ -2,10 +2,7 @@
 
 namespace BrainGames\Games\Progressive;
 
-use function BrainGames\Engine\askQuestionAndEnterAnswer;
-use function BrainGames\Engine\checkResult;
-use function BrainGames\Engine\printCongratulations;
-use function BrainGames\Engine\askNameAndSayWelcome;
+use function BrainGames\Engine\play;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
@@ -20,50 +17,28 @@ function runGameProgressive(): void
     $task = [];
 
     for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
+        $string = range(RANGE_START, RANGE_END, rand(MIN_STEP, MAX_STEP));
+        $indexHideValue = array_rand($string);
+
+        $readyString = replaceRandomNum($string, $indexHideValue);
+
         $task[] = [
-            'string' => range(RANGE_START, RANGE_END, rand(MIN_STEP, MAX_STEP)),
-            'hideValue' => null,
-            'answer' => null
+            'questionText' => 'What number is missing in the progression?',
+            'question' => 'Question: ' . implode(" ", $readyString),
+            'answer' => (string)$string[$indexHideValue]
         ];
-
-        $task[$a]['hideValue'] = array_rand($task[$a]['string']);
-        $task[$a]['answer'] = $task[$a]['string'][$task[$a]['hideValue']];
     }
 
-    var_dump($task);
-
-    $name = askNameAndSayWelcome();
-
-    for ($a = 0; $a < count($task); ++$a) {
-        $workString = [];
-
-        list($task[$a]['answer'], $workString) = replaceRandomNum(
-            $task[$a]['string'],
-            $task[$a]['hideValue'],
-            $task[$a]['answer'],
-            $workString
-        );
-
-        $userAnswer = askQuestionAndEnterAnswer(
-            'What number is missing in the progression?',
-            'Question: ' . implode(" ", $workString)
-        );
-
-        if (checkResult($task[$a]['answer'], $userAnswer, $name) === false) {
-            return;
-        }
-    }
-    printCongratulations($name);
+    play($task);
 }
 
-function replaceRandomNum(array $string, int $indexHideValue, int $realAnswer, array $workString): array
+function replaceRandomNum(array $string, int $indexHideValue): array
 {
     foreach ($string as $value) {
         if ($value === $string[$indexHideValue]) {
-            $realAnswer = $value;
             $value = '..';
         }
-        $workString[] = (string)$value;
+        $readyString[] = $value;
     }
-    return array((int)$realAnswer, $workString);
+    return $readyString;
 }
