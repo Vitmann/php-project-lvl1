@@ -32,7 +32,7 @@ function checkResult(string $result, string $userAnswer, string $name): bool
     }
 }
 
-function play($array): void
+function play(array $array): void
 {
     $name = runCli();
 

@@ -21,7 +21,7 @@ function runGamePrime(): void
             'answer' => null
         ];
 
-        $task[$a]['answer'] = (string)isPrimeNumber($task[$a]['question']) ? 'yes' : 'no';
+        $task[$a]['answer'] = isPrimeNumber($task[$a]['question']) ? 'yes' : 'no';
     }
     play($task);
 }
