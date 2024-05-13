@@ -13,14 +13,14 @@ const MAX_RANDOM_NUMBER = 10;
 function runGameEven(): void
 {
     $taskEven = [];
-    for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
+    for ($i = 0; $i < ROUNDS_COUNT; ++$i) {
         $taskEven[] = [
             'questionText' => 'Answer "yes" if the number is even, otherwise answer "no".',
             'question' => rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
             'answer' => null
         ];
 
-        $taskEven[$a]['answer'] = isEven($taskEven[$a]['question']) ? 'yes' : 'no';
+        $taskEven[$i]['answer'] = isEven($taskEven[$i]['question']) ? 'yes' : 'no';
     }
     play($taskEven);
 }
