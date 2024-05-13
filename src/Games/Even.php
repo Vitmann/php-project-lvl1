@@ -12,17 +12,17 @@ const MAX_RANDOM_NUMBER = 10;
 //Игра: "Проверка на чётность"
 function runGameEven(): void
 {
-    $taskEven = [];
-    for ($i = 0; $i < ROUNDS_COUNT; ++$i) {
-        $taskEven[] = [
+    $task = [];
+    for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
+        $task[] = [
             'questionText' => 'Answer "yes" if the number is even, otherwise answer "no".',
             'question' => rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
             'answer' => null
         ];
 
-        $taskEven[$i]['answer'] = isEven($taskEven[$i]['question']) ? 'yes' : 'no';
+        $task[$a]['answer'] = isEven($task[$a]['question']) ? 'yes' : 'no';
     }
-    play($taskEven);
+    play($task);
 }
 
 function isEven(int $number): bool
