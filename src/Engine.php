@@ -5,6 +5,7 @@ namespace BrainGames\Engine;
 use function BrainGames\Cli\runCli;
 use function cli\line;
 use function cli\prompt;
+use function PHPUnit\Framework\stringContains;
 
 const ROUNDS_COUNT = 3; //количество раундов в играх
 
@@ -14,9 +15,8 @@ function printWrongAnswerMessage(string $userAnswer, string $correctAnswer, stri
     line("Let's try again, {$name}!");
 }
 
-function askQuestionAndEnterAnswer(string $questionText, string $question): string
+function askQuestionAndEnterAnswer(string $question): string
 {
-    line($questionText);
     line($question);
     return prompt('Your answer ');
 }
@@ -32,13 +32,13 @@ function checkResult(string $result, string $userAnswer, string $name): bool
     }
 }
 
-function play(array $array): void
+function play(array $array, string $rules): void
 {
     $name = runCli();
+    line($rules);
 
     for ($i = 0; $i < count($array); ++$i) {
         $answer = askQuestionAndEnterAnswer(
-            "{$array[$i]['questionText']}",
             "Question: {$array[$i]['question']} "
         );
 

@@ -23,12 +23,11 @@ function runGameProgressive(): void
         $readyString = replaceRandomNum($string, $indexHideValue);
 
         $task[] = [
-            'questionText' => 'What number is missing in the progression?',
             'question' => 'Question: ' . implode(" ", $readyString),
             'answer' => (string)$string[$indexHideValue]
         ];
     }
-    play($task);
+    play($task, 'What number is missing in the progression?');
 }
 
 function replaceRandomNum(array $string, int $indexHideValue): array

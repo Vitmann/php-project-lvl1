@@ -18,13 +18,12 @@ function runGameGcd(): void
         $randomNumber2 = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
         $task[] = [
-            'questionText' => 'Find the greatest common divisor of given numbers.',
             'question' => "{$randomNumber1} {$randomNumber2}",
             'answer' => (string)getGreatestCommonDivisor($randomNumber1, $randomNumber2)
         ];
     }
 
-    play($task);
+    play($task, 'Find the greatest common divisor of given numbers.');
 }
 
 function getGreatestCommonDivisor(int $a, int $b): int

@@ -20,13 +20,12 @@ function runGameCalc(): void
         $operation = $operations[array_rand($operations)];
 
         $task[] = [
-            'questionText' => 'What is the result of the expression?',
             'question' => "{$randomNum1} {$operation} {$randomNum2}",
             'answer' => calculateResult($operation, $randomNum1, $randomNum2)
         ];
     }
 
-    play($task);
+    play($task, 'What is the result of the expression?');
 }
 
 function calculateResult(string $operation, int $num1, int $num2)
