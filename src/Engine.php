@@ -5,7 +5,6 @@ namespace BrainGames\Engine;
 use function BrainGames\Cli\runCli;
 use function cli\line;
 use function cli\prompt;
-use function PHPUnit\Framework\stringContains;
 
 const ROUNDS_COUNT = 3; //количество раундов в играх
 
