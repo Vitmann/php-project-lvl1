@@ -14,21 +14,15 @@ function printWrongAnswerMessage(string $userAnswer, string $correctAnswer, stri
     line("Let's try again, {$name}!");
 }
 
-function askQuestionAndEnterAnswer(string $question): string
-{
-    line($question);
-    return prompt('Your answer ');
-}
-
 function checkResult(string $result, string $userAnswer, string $name): bool
 {
     if ($result === $userAnswer) {
         line('Correct!');
         return true;
-    } else {
-        printWrongAnswerMessage($userAnswer, $result, $name);
-        return false;
     }
+
+    printWrongAnswerMessage($userAnswer, $result, $name);
+    return false;
 }
 
 function play(array $array, string $rules): void
@@ -36,10 +30,11 @@ function play(array $array, string $rules): void
     $name = runCli();
     line($rules);
 
-    for ($i = 0; $i < count($array); ++$i) {
-        $answer = askQuestionAndEnterAnswer(
-            "Question: {$array[$i]['question']} "
-        );
+    $count = count($array);
+
+    for ($i = 0; $i < $count; ++$i) {
+        line("Question: {$array[$i]['question']} ");
+        $answer = prompt('Your answer ');
 
         if (checkResult($array[$i]['answer'], $answer, $name) === false) {
             return;

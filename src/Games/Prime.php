@@ -14,12 +14,12 @@ function runGamePrime(): void
 {
     $task = [];
     for ($a = 0; $a < ROUNDS_COUNT; ++$a) {
-        $task[] = [
-            'question' => rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
-            'answer' => null
-        ];
+        $question = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
-        $task[$a]['answer'] = isPrimeNumber($task[$a]['question']) ? 'yes' : 'no';
+        $task[] = [
+            'question' => $question,
+            'answer' => isPrimeNumber($question) ? 'yes' : 'no'
+        ];
     }
     play($task, 'Answer "yes" if given number is prime. Otherwise answer "no".');
 }

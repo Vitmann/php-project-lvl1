@@ -14,12 +14,12 @@ function runGameEven(): void
 {
     $taskEven = [];
     for ($index = 0; $index < ROUNDS_COUNT; ++$index) {
-        $taskEven[] = [
-            'question' => rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER),
-            'answer' => null
-        ];
+        $question = rand(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
 
-        $taskEven[$index]['answer'] = isEven($taskEven[$index]['question']) ? 'yes' : 'no';
+        $taskEven[] = [
+            'question' => $question,
+            'answer' => isEven($question) ? 'yes' : 'no'
+        ];
     }
     play($taskEven, 'Answer "yes" if the number is even, otherwise answer "no".');
 }
